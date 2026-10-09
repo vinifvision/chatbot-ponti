@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assistente Ponti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Identidade visual do app Ponti, extraída da tela "Mentores recomendados":
+   barra lateral lilás com cantos arredondados, texto azul-marinho, botões roxos,
+   campos em cinza-azulado claro, cards brancos com borda cinza e fonte Poppins.
+   Layout: barra lateral com o logo e as perguntas sugeridas + área de conversa.
+   No celular a barra lateral vira um topo lilás e as sugestões aparecem na conversa. */
+:root {
+  --lilas: #C8A4FE;
+  --lilas-ativo: #B69AF1;
+  --lilas-claro: #E8DAFF;
+  --roxo: #AF7AFE;
+  --marinho: #070161;
+  --texto: #111111;
+  --campo: #F6F7FC;
+  --borda: #C2C2C2;
+  --rosa: #C8A0BA;
+  --erro: #B3261E;
+  --erro-fundo: #FDECEA;
+  --fonte: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: #fff;
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.app { display: flex; height: 100dvh; }
+
+/* ---------- barra lateral ---------- */
+.lateral {
+  width: 232px;
+  flex: none;
+  background: var(--lilas);
+  border-radius: 0 32px 32px 0;
+  padding: 18px 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  overflow-y: auto;
+}
+.logo { display: block; width: 118px; height: 42px; margin-left: 12px; }
+.lateral h2 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--marinho);
+  margin: 0 0 8px 12px;
+}
+.menu { display: flex; flex-direction: column; gap: 4px; }
+.menu button {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--marinho);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.menu button:hover { background: var(--lilas-ativo); }
+
+/* ---------- área principal ---------- */
+.principal {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 48px 20px;
+}
+.titulo-area { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin-bottom: 18px; }
+h1 { font-size: 24px; font-weight: 500; margin: 0; }
+.selo {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--marinho);
+  background: var(--rosa);
+  border-radius: 4px;
+  padding: 2px 10px;
+  width: fit-content;
+}
+
+#conversa {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 2px 4px 12px 0;
+}
+.msg {
+  max-width: min(640px, 88%);
+  padding: 12px 16px;
+  border-radius: 10px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.bot { align-self: flex-start; background: #fff; border: 1px solid var(--borda); }
+.user { align-self: flex-end; background: var(--lilas-claro); color: var(--marinho); }
+.erro { align-self: flex-start; background: var(--erro-fundo); color: var(--erro); border: 1px solid var(--erro); }
+
+.pensando { display: inline-flex; gap: 5px; align-items: center; height: 1.55em; }
+.pensando span {
+  width: 7px; height: 7px; background: var(--roxo); border-radius: 50%;
+  animation: pulso 1.2s infinite ease-in-out;
+}
+.pensando span:nth-child(2) { animation-delay: 0.15s; }
+.pensando span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulso { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .pensando span { animation: none; opacity: 0.7; } }
+
+#chips { display: none; flex-wrap: wrap; gap: 8px; padding: 0 0 12px; }
+#chips[hidden] { display: none; }
+#chips button {
+  font: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--marinho);
+  background: var(--campo);
+  border: 1px solid var(--lilas);
+  border-radius: 10px;
+  padding: 6px 12px;
+  text-align: left;
+  cursor: pointer;
+}
+
+form { display: flex; gap: 10px; padding-top: 14px; border-top: 1px solid #E6E6EE; }
+input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  color: var(--texto);
+  background: var(--campo);
+  border: 1px solid #D9DBEA;
+  border-radius: 10px;
+  padding: 11px 14px;
+}
+input[type="text"]::placeholder { color: #7C7F95; }
+#enviar {
+  font: inherit;
+  font-weight: 500;
+  color: #fff;
+  background: var(--roxo);
+  border: 0;
+  border-radius: 8px;
+  padding: 0 26px;
+  cursor: pointer;
+}
+#enviar:hover { background: #A068F7; }
+#enviar:disabled { opacity: 0.55; cursor: not-allowed; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--marinho); outline-offset: 2px; }
+
+/* ---------- celular e telas estreitas ---------- */
+@media (max-width: 899px) {
+  .app { flex-direction: column; }
+  .lateral {
+    width: auto;
+    border-radius: 0 0 24px 24px;
+    padding: 14px 16px;
+    gap: 0;
+    overflow: visible;
+  }
+  .logo { margin-left: 0; }
+  .lateral nav { display: none; }
+  .principal { padding: 20px 16px 14px; }
+  h1 { font-size: 20px; }
+  #chips { display: flex; }
+  #chips[hidden] { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="lateral">
+    <img class="logo" src="logo.png" alt="Ponti" width="118" height="42">
+    <nav aria-label="Perguntas sugeridas">
+      <h2>Perguntas sugeridas</h2>
+      <div class="menu" id="menu"></div>
+    </nav>
+  </aside>
+
+  <main class="principal">
+    <div class="titulo-area">
+      <h1 id="titulo">Assistente Ponti</h1>
+      <span class="selo">Responde com base na base de conhecimento do Ponti</span>
+    </div>
+
+    <div id="conversa" role="log" aria-live="polite"></div>
+    <div id="chips"></div>
+
+    <form id="formulario" autocomplete="off">
+      <input type="text" id="pergunta" placeholder="Digite sua pergunta..." maxlength="500" aria-label="Sua pergunta" required>
+      <button type="submit" id="enviar">Enviar</button>
+    </form>
+  </main>
+</div>
+
+<script>
+const conversa = document.getElementById('conversa');
+const chips = document.getElementById('chips');
+const menu = document.getElementById('menu');
+const formulario = document.getElementById('formulario');
+const campo = document.getElementById('pergunta');
+const botao = document.getElementById('enviar');
+
+// Histórico enviado ao servidor a cada pergunta (a saudação não entra).
+const historico = [];
+
+function adicionar(classe, texto) {
+  const el = document.createElement('div');
+  el.className = 'msg ' + classe;
+  el.textContent = texto;
+  conversa.appendChild(el);
+  conversa.scrollTop = conversa.scrollHeight;
+  return el;
+}
+
+function adicionarPensando() {
+  const el = document.createElement('div');
+  el.className = 'msg bot';
+  el.innerHTML = '<span class="pensando" role="status" aria-label="Pensando"><span></span><span></span><span></span></span>';
+  conversa.appendChild(el);
+  conversa.scrollTop = conversa.scrollHeight;
+  return el;
+}
+
+async function perguntar(texto) {
+  texto = texto.trim();
+  if (!texto || botao.disabled) return;
+
+  chips.hidden = true;
+  adicionar('user', texto);
+  historico.push({ role: 'user', content: texto });
+  campo.value = '';
+  botao.disabled = true;
+  const pensando = adicionarPensando();
+
+  try {
+    const r = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mensagens: historico }),
+    });
+    const dados = await r.json();
+    if (!r.ok) throw new Error(dados.erro || 'Algo deu errado. Tente de novo.');
+    pensando.remove();
+    adicionar('bot', dados.resposta);
+    historico.push({ role: 'assistant', content: dados.resposta });
+  } catch (e) {
+    pensando.remove();
+    historico.pop(); // tira a pergunta que falhou para poder tentar de novo
+    adicionar('erro', e.message || 'Não consegui falar com o servidor.');
+  } finally {
+    botao.disabled = false;
+    campo.focus();
+  }
+}
+
+formulario.addEventListener('submit', (e) => {
+  e.preventDefault();
+  perguntar(campo.value);
+});
+
+function criarBotao(destino, texto) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = texto;
+  b.addEventListener('click', () => perguntar(texto));
+  destino.appendChild(b);
+}
+
+async function iniciar() {
+  try {
+    const r = await fetch('/api/config');
+    const cfg = await r.json();
+    if (!r.ok) throw new Error(cfg.erro);
+    document.getElementById('titulo').textContent = cfg.nome;
+    adicionar('bot', cfg.saudacao);
+    cfg.sugestoes.forEach((s) => { criarBotao(menu, s); criarBotao(chips, s); });
+  } catch (e) {
+    adicionar('erro', e.message || 'Não consegui carregar a configuração do chatbot.');
+  }
+}
+iniciar();
+</script>
+</body>
+</html>
