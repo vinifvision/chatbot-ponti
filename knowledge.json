@@ -1,0 +1,216 @@
+{
+  "bot": {
+    "nome": "Assistente Ponti",
+    "tema": "Ponti, plataforma de match entre startups e mentores",
+    "saudacao": "Olá! Sou o assistente da Ponti. Pergunte sobre a plataforma, o cadastro, os convites, os mentores ou o estágio de maturidade.",
+    "sugestoes": [
+      "O que é a Ponti?",
+      "Como cadastro minha startup?",
+      "Como funciona o convite para um mentor?",
+      "Quanto custa a mentoria?",
+      "O que é o estágio de maturidade?"
+    ]
+  },
+  "entradas": [
+    {
+      "id": "o-que-e",
+      "titulo": "O que é a Ponti",
+      "perguntas": [
+        "O que é a Ponti?",
+        "Para que serve a plataforma?",
+        "Me explique o projeto"
+      ],
+      "resposta": "A Ponti é uma plataforma digital que conecta startups em estágio inicial (ideação e validação de MVP) a mentores experientes do ecossistema de inovação. A conexão é feita por um canal dedicado e bidirecional, no estilo de um match."
+    },
+    {
+      "id": "problema",
+      "titulo": "Problema que o Ponti resolve",
+      "perguntas": [
+        "Qual problema a Ponti resolve?",
+        "Por que a Ponti existe?",
+        "Qual é o objetivo?"
+      ],
+      "resposta": "Muitos negócios novos fecham cedo por falta de experiência dos fundadores. Hoje a busca por mentores acontece de forma informal, por networking, editais e indicações, ou em redes genéricas como o LinkedIn. A Ponti oferece um canal dedicado para essa conexão."
+    },
+    {
+      "id": "publico-startups",
+      "titulo": "Quem pode usar como startup",
+      "perguntas": [
+        "Quem pode usar a Ponti?",
+        "Minha startup se encaixa?",
+        "Para quais startups é a plataforma?"
+      ],
+      "resposta": "O foco são startups em fase de ideação e de validação de MVP, que precisam de mentoria, eventos e incubadoras. Investidores ficam fora da primeira entrega."
+    },
+    {
+      "id": "publico-mentores",
+      "titulo": "Quem pode ser mentor",
+      "perguntas": [
+        "Quem pode ser mentor?",
+        "Como funciona para o mentor?",
+        "Posso virar mentor na Ponti?"
+      ],
+      "resposta": "Os mentores são pessoas experientes do ecossistema de inovação. Cada mentor tem um perfil na plataforma e um painel onde recebe os convites das startups e decide se aceita ou recusa."
+    },
+    {
+      "id": "cadastro-startup",
+      "titulo": "Como cadastrar uma startup",
+      "perguntas": [
+        "Como cadastro minha startup?",
+        "Como crio meu perfil?",
+        "O que preciso para me registrar?"
+      ],
+      "resposta": "A startup cria o perfil com nome, descrição, vídeo de pitch e áreas de atuação. No cadastro ela também preenche um formulário de maturidade, e a plataforma usa as respostas para definir o estágio da startup."
+    },
+    {
+      "id": "perfil-startup",
+      "titulo": "O que aparece no perfil da startup",
+      "perguntas": [
+        "O que aparece no perfil da startup?",
+        "Quais informações o mentor vê?",
+        "O perfil mostra dados sensíveis?"
+      ],
+      "resposta": "O perfil reúne o que o mentor precisa para entender a startup: nome, descrição, vídeo de pitch em destaque, atuações e outras informações como segmento, cidade e site. Informações sensíveis não são exibidas."
+    },
+    {
+      "id": "video-pitch",
+      "titulo": "Vídeo de pitch",
+      "perguntas": [
+        "Preciso gravar um vídeo?",
+        "O que é o vídeo de pitch?",
+        "Onde o vídeo aparece?"
+      ],
+      "resposta": "O vídeo de pitch é uma apresentação curta da startup e aparece em destaque no perfil. Ele ajuda o mentor a entender a ideia rapidamente antes de aceitar um convite."
+    },
+    {
+      "id": "estagio-maturidade",
+      "titulo": "Estágio de maturidade",
+      "perguntas": [
+        "O que é o estágio de maturidade?",
+        "O que significa TRL?",
+        "Para que serve a escala de maturidade?"
+      ],
+      "resposta": "O estágio de maturidade mostra em que fase está a startup, da ideia inicial até um MVP validado. A escala é inspirada no TRL (Technology Readiness Level) da NASA e ajuda o mentor a entender o momento do negócio."
+    },
+    {
+      "id": "calculo-maturidade",
+      "titulo": "Como o estágio de maturidade é calculado",
+      "perguntas": [
+        "Como o estágio é calculado?",
+        "Eu escolho meu estágio?",
+        "Como funciona o formulário de maturidade?"
+      ],
+      "resposta": "A startup não escolhe o estágio diretamente. No cadastro ela responde a um formulário em que marca o que já tem, por exemplo pesquisa, protótipo ou testes. Com base nessas marcações, a plataforma calcula o estágio automaticamente."
+    },
+    {
+      "id": "convite-match",
+      "titulo": "Como funciona o convite e o match",
+      "perguntas": [
+        "Como funciona o convite para um mentor?",
+        "Como faço match com um mentor?",
+        "Como convido um mentor?"
+      ],
+      "resposta": "A startup escolhe um mentor de que gostou e envia um convite. Se o mentor gostar da startup, ele aceita o convite. Só depois do aceite os dois combinam os valores e a agenda. A ideia é parecida com a do Preply, em que o aluno escolhe um professor e marca uma aula."
+    },
+    {
+      "id": "mentor-aceita",
+      "titulo": "Como o mentor aceita ou recusa",
+      "perguntas": [
+        "Como o mentor responde ao convite?",
+        "O mentor pode recusar?",
+        "Como é o painel do mentor?"
+      ],
+      "resposta": "No painel, o mentor vê os convites recebidos de forma organizada e pode aceitar ou recusar com poucos cliques. Por isso o match é bidirecional: a startup convida e o mentor também escolhe."
+    },
+    {
+      "id": "valores",
+      "titulo": "Valores da mentoria",
+      "perguntas": [
+        "Quanto custa a mentoria?",
+        "Quem define o preço?",
+        "Quando se negocia o valor?"
+      ],
+      "resposta": "Cada mentor tem um valor por sessão, que ele define e que aparece no perfil dele. A negociação dos valores só acontece depois que o mentor aceita o convite."
+    },
+    {
+      "id": "agenda",
+      "titulo": "Agenda integrada",
+      "perguntas": [
+        "Como marco os horários?",
+        "Existe agenda na plataforma?",
+        "Como alinho a sessão com o mentor?"
+      ],
+      "resposta": "O Ponti tem uma agenda integrada, em que startup e mentor alinham os horários das sessões depois que o convite é aceito."
+    },
+    {
+      "id": "perfil-mentor",
+      "titulo": "O que aparece no perfil do mentor",
+      "perguntas": [
+        "O que aparece no perfil do mentor?",
+        "Como sei se o mentor é bom para mim?",
+        "O mentor mostra experiência?"
+      ],
+      "resposta": "O perfil do mentor mostra o nome, a bio, as áreas de atuação, o valor por sessão e os ecossistemas e comunidades em que ele está inserido, como aceleradoras e incubadoras."
+    },
+    {
+      "id": "linkedin",
+      "titulo": "Diferença para o LinkedIn",
+      "perguntas": [
+        "Por que não usar o LinkedIn?",
+        "Qual a diferença para o LinkedIn?",
+        "O que o Ponti tem de diferente?"
+      ],
+      "resposta": "O LinkedIn é uma rede genérica e a busca por mentores nele é informal. O Ponti é dedicado a startups e mentores, mostra o estágio de maturidade da startup e permite que os dois lados escolham um ao outro."
+    },
+    {
+      "id": "preply",
+      "titulo": "Relação com o Preply",
+      "perguntas": [
+        "O Ponti é parecido com o Preply?",
+        "Por que o Preply é referência?",
+        "Qual a diferença para o Preply?"
+      ],
+      "resposta": "O fluxo do Ponti se inspira no Preply, plataforma de aulas de idiomas em que o aluno escolhe um professor e marca uma aula. A diferença é que no Ponti o match é bidirecional: o mentor também escolhe quais startups aceitar."
+    },
+    {
+      "id": "investidores",
+      "titulo": "Investidores",
+      "perguntas": [
+        "O Ponti conecta investidores?",
+        "Posso encontrar investidor na plataforma?",
+        "E os investidores?"
+      ],
+      "resposta": "Na primeira entrega, o foco é o match entre startups e mentores, e os investidores ficam fora dessa fase. A equipe priorizou startups em ideação e validação, que precisam mais de mentoria."
+    },
+    {
+      "id": "segunda-entrega",
+      "titulo": "Próximas funcionalidades",
+      "perguntas": [
+        "O que vem depois?",
+        "Vai ter eventos na plataforma?",
+        "Quais são os próximos passos do Ponti?"
+      ],
+      "resposta": "A segunda entrega planejada inclui a descoberta de eventos, workshops e incubadoras, e a conexão com empresas de POC (prova de conceito) que geram certificado de validação."
+    },
+    {
+      "id": "tecnologia",
+      "titulo": "Tecnologias usadas",
+      "perguntas": [
+        "Quais tecnologias o Ponti usa?",
+        "Como a plataforma foi construída?",
+        "Qual o banco de dados?"
+      ],
+      "resposta": "A interface é uma Single Page Application (SPA), feita em Angular, para uma navegação ágil. O backend é uma API REST em Java com Spring Boot, integrada a um banco de dados relacional PostgreSQL."
+    },
+    {
+      "id": "modelo-negocio",
+      "titulo": "Modelo de negócio",
+      "perguntas": [
+        "Como o Ponti ganha dinheiro?",
+        "A plataforma é gratuita?",
+        "Existe cobrança para startups?"
+      ],
+      "resposta": "O modelo de negócio do Ponti ainda está em definição pela equipe. O que já existe é que cada mentor define o valor da própria sessão, negociado depois do aceite do convite."
+    }
+  ]
+}
