@@ -1,6 +1,6 @@
 # Chatbot do Ponti (LLM + JSON + interface web)
 
-Chatbot que responde perguntas sobre o **Ponti**, plataforma de match entre startups e mentores. Ele usa um LLM para interpretar a pergunta e gerar a resposta com base nas informações do arquivo `knowledge.json`.
+Chatbot que responde perguntas sobre a **Ponti**, plataforma de match entre startups e mentores. Ele usa um LLM para interpretar a pergunta e gerar a resposta com base nas informações do arquivo `knowledge.json`.
 
 ## Como atende a atividade
 
